@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="pt-BR" data-lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Maria Eduarda Ruela">
+<meta property="og:description" content="Engenharia elétrica, desenvolvimento de software, IA generativa e IoT.">
+<meta property="og:image" content="img/foto.jpg">
+<link rel="icon" href="img/foto.jpg">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} body{margin:0} img{max-width:100%} [hidden]{display:none!important}</style>
+<title>Maria Eduarda Ruela</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Portfólio de Maria Eduarda Cajango Ruela: engenharia elétrica, desenvolvimento de software, IA generativa e IoT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: left-aligned spec-sheet. Each project is a module: figure + datasheet table. One bold moment: the LoRa chirp in the hero. */
+:root {
+  --bg: #fbfcfb;
+  --surface: #ffffff;
+  --ink: #142019;
+  --muted: #56645c;
+  --line: #d5ddd8;
+  --mask: #0e6a54;      /* solder-mask green */
+  --copper: #b56a22;    /* copper trace, used sparingly */
+  --mask-soft: #e6f2ed;
+  --display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --maxw: 1080px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: var(--maxw); margin: 0 auto; }
+a { color: var(--mask); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; border-radius: 2px; }
+
+/* language switching */
+html[data-lang="pt"] [lang="en"] { display: none !important; }
+html[data-lang="en"] [lang="pt"] { display: none !important; }
+
+/* header */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.mark { font-family: var(--mono); font-size: 13px; letter-spacing: .04em; color: var(--ink); text-decoration: none; }
+.mark b { color: var(--mask); font-weight: 500; }
+.nav { display: flex; align-items: center; gap: 20px; }
+.nav a { font-size: 14px; color: var(--muted); text-decoration: none; }
+.nav a:hover { color: var(--ink); }
+.lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 2px; }
+.lang button {
+  font: 500 12px var(--mono); letter-spacing: .06em; border: 0; background: transparent; color: var(--muted);
+  padding: 4px 10px; border-radius: 999px; cursor: pointer;
+}
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+@media (max-width: 640px) { .nav a { display: none; } }
+
+/* hero */
+.hero { padding-block: 56px 32px; display: grid; gap: 28px; }
+.eyebrow { font: 500 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+h1 {
+  font-family: var(--display); font-weight: 800; letter-spacing: -.02em;
+  font-size: clamp(38px, 7vw, 76px); line-height: 1.02; margin: 0; text-wrap: balance;
+}
+h1 .soft { color: var(--muted); font-weight: 500; }
+.lede { font-size: clamp(17px, 2vw, 20px); max-width: 62ch; margin: 0; color: var(--ink); }
+.links { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+  font: 500 13px var(--mono); color: var(--ink);
+  border: 1px solid var(--line); background: var(--surface); padding: 7px 12px; border-radius: 6px;
+}
+.chip:hover { border-color: var(--mask); color: var(--mask); }
+.scope {
+  margin: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--surface);
+  overflow: hidden;
+}
+.scope canvas { display: block; width: 100%; height: 150px; }
+.scope figcaption {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px;
+  font: 12px var(--mono); color: var(--muted); padding: 8px 14px; border-top: 1px solid var(--line);
+}
+.scope figcaption b { color: var(--copper); font-weight: 500; }
+
+/* sections */
+section { padding-block: 44px; border-top: 1px solid var(--line); }
+h2 {
+  font-family: var(--display); font-weight: 700; font-size: clamp(26px, 3.4vw, 34px);
+  letter-spacing: -.01em; margin: 0 0 6px; text-wrap: balance;
+}
+.sub { color: var(--muted); margin: 0 0 28px; max-width: 62ch; }
+
+/* project module */
+.module { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 32px; padding-block: 28px; }
+.module + .module { border-top: 1px dashed var(--line); }
+@media (max-width: 860px) { .module { grid-template-columns: minmax(0, 1fr); gap: 20px; } }
+.fig {
+  margin: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--surface);
+  align-self: start;
+}
+.fig img { display: block; width: 100%; height: auto; }
+.fig figcaption { font: 12px var(--mono); color: var(--muted); padding: 8px 12px; border-top: 1px solid var(--line); }
+.fig .diagram { overflow-x: auto; padding: 14px 10px; }
+.fig svg { display: block; width: 100%; min-width: 460px; height: auto; }
+.mod-head { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
+.mod-head img { width: 40px; height: 40px; border-radius: 9px; }
+h3 { font-family: var(--display); font-weight: 700; font-size: 24px; margin: 0; letter-spacing: -.01em; }
+.status {
+  display: inline-block; font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase;
+  padding: 3px 8px; border-radius: 4px; background: var(--mask-soft); color: var(--mask); margin-bottom: 12px;
+}
+.status.wip { background: color-mix(in srgb, var(--copper) 16%, transparent); color: var(--copper); }
+.mod-body p { margin: 0 0 14px; max-width: 60ch; }
+.spec { width: 100%; border-collapse: collapse; font-size: 14px; margin: 6px 0 14px; }
+.spec th, .spec td { text-align: left; vertical-align: top; padding: 7px 0; border-top: 1px solid var(--line); }
+.spec th { font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); width: 32%; padding-right: 12px; padding-top: 9px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font: 12px var(--mono); padding: 2px 7px; border: 1px solid var(--line); border-radius: 4px; color: var(--ink); background: var(--bg); }
+.points { margin: 0 0 14px; padding-left: 18px; }
+.points li { margin-bottom: 6px; }
+.points li::marker { color: var(--copper); }
+
+/* other projects */
+.list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 860px) { .list { grid-template-columns: minmax(0, 1fr); } }
+.item { border: 1px solid var(--line); border-radius: 10px; padding: 18px; background: var(--surface); display: grid; gap: 8px; align-content: start; }
+.item .when { font: 12px var(--mono); color: var(--muted); }
+.item h4 { font-family: var(--display); font-size: 18px; margin: 0; line-height: 1.25; }
+.item p { margin: 0; font-size: 15px; color: var(--muted); }
+
+/* award */
+.award { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center; }
+.medal {
+  width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center;
+  border: 2px solid var(--copper); color: var(--copper); font: 700 22px var(--display);
+}
+.award p { margin: 0; }
+.award strong { font-family: var(--display); font-size: 20px; display: block; }
+
+/* education + skills */
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
+@media (max-width: 760px) { .two { grid-template-columns: minmax(0, 1fr); } }
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.timeline li { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px; }
+.timeline .yrs { font: 12px var(--mono); color: var(--muted); padding-top: 3px; font-variant-numeric: tabular-nums; }
+.timeline strong { display: block; }
+.timeline span { color: var(--muted); font-size: 15px; }
+.skillgroup + .skillgroup { margin-top: 18px; }
+.skillgroup h4 { font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+h3.col { font-size: 18px; margin-bottom: 14px; }
+
+/* contact */
+.contact { display: grid; gap: 14px; }
+.mail { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.mail code { font: 500 clamp(15px, 2.4vw, 20px) var(--mono); color: var(--ink); user-select: all; word-break: break-all; }
+.copy {
+  font: 500 12px var(--mono); border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  padding: 6px 10px; border-radius: 6px; cursor: pointer;
+}
+.copy:hover { border-color: var(--mask); }
+
+.hero-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; }
+.portrait { margin: 0; width: clamp(150px, 20vw, 220px); aspect-ratio: 1; border-radius: 50%; overflow: hidden; border: 3px solid var(--surface); box-shadow: 0 0 0 1px var(--line), 0 10px 30px -12px rgba(20, 32, 25, .35); }
+.portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+@media (max-width: 640px) {
+  .hero-top { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .portrait { order: -1; width: 120px; }
+}
+.award-photo { margin: 18px 0 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--surface); }
+.award-photo img { display: block; width: 100%; height: auto; }
+.award-photo figcaption { font: 12px var(--mono); color: var(--muted); padding: 8px 12px; border-top: 1px solid var(--line); }
+
+.carousel .slides { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; }
+.carousel .slides::-webkit-scrollbar { display: none; }
+@media (prefers-reduced-motion: reduce) { .carousel .slides { scroll-behavior: auto; } }
+.carousel .slide { flex: 0 0 100%; min-width: 0; scroll-snap-align: start; display: grid; align-items: center; background: var(--surface); }
+.carousel .slide { aspect-ratio: 16 / 10; }
+.carousel .slide:has(> img) { background: #0f1729; }
+.carousel .slide img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.carousel .diagram { overflow: visible; }
+.carousel .fig svg, .carousel svg { min-width: 0; }
+.car-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 6px 8px 6px 12px; border-top: 1px solid var(--line); }
+.car-cap { font: 12px var(--mono); color: var(--muted); min-width: 0; flex: 1 1 220px; }
+.car-bar { flex-wrap: wrap; row-gap: 6px; }
+.car-ctrl { margin-left: auto; }
+.car-ctrl { display: flex; align-items: center; gap: 8px; }
+.car-btn { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg); color: var(--ink); font: 18px/1 var(--body); cursor: pointer; }
+.car-btn:hover { border-color: var(--mask); color: var(--mask); }
+.car-btn:disabled { opacity: .35; cursor: default; }
+.car-full { display: grid; place-items: center; }
+.car-full .i-close, .carousel.is-full .car-full .i-open { display: none; }
+.carousel.is-full .car-full .i-close { display: inline; }
+.carousel.is-full { position: fixed; inset: 0; z-index: 1000; border: 0; border-radius: 0; box-shadow: none; display: grid; grid-template-rows: minmax(0, 1fr) auto; width: 100vw; height: 100vh; height: 100dvh; background: #0b0f14; }
+.carousel.is-full .slides { min-height: 0; height: 100%; }
+.carousel.is-full .slide { aspect-ratio: auto; height: 100%; min-height: 0; overflow: hidden; background: #0b0f14; }
+.carousel.is-full .slide:not(:has(> img)) { background: var(--surface); }
+.carousel.is-full .diagram { height: 100%; display: grid; place-items: center; box-sizing: border-box; }
+.carousel.is-full .diagram svg { width: auto; height: 100%; max-width: 100%; max-height: 100%; margin: auto; }
+.carousel.is-full .slide img { transform: none !important; }
+.carousel.is-full .car-bar { background: var(--surface); }
+html.car-lock, html.car-lock body { overflow: hidden; }
+.dots { display: flex; gap: 6px; }
+.dots i { width: 7px; height: 7px; border-radius: 50%; background: var(--line); display: block; }
+.dots i.on { background: var(--mask); }
+footer { padding-block: 28px 40px; border-top: 1px solid var(--line); font: 12px var(--mono); color: var(--muted); }
+
+/* ---- visual polish ---- */
+:root { --band: #142019; --band-ink: #eef4f1; --band-muted: #a9b8b0; --band-line: #2c3a34; --band-surface: #1b2a24; --glow: #cfe9de; }
+html, body { overflow-x: clip; }
+.hero { position: relative; isolation: isolate; padding-block: 64px 40px; }
+.hero::before {
+  content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw);
+  background:
+    radial-gradient(60% 70% at 85% 30%, color-mix(in srgb, var(--glow) 70%, transparent), transparent 70%),
+    radial-gradient(40% 60% at 10% 90%, color-mix(in srgb, var(--copper) 10%, transparent), transparent 70%),
+    url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22240%22%20height%3D%22240%22%20viewBox%3D%220%200%20240%20240%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%230e6a54%22%20stroke-width%3D%221.4%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20opacity%3D%22.16%22%3E%3Cpath%20d%3D%22M0%2040h60l20%2020h60%22/%3E%3Cpath%20d%3D%22M140%2060l30-30h70%22/%3E%3Cpath%20d%3D%22M20%20240v-60l30-30v-40%22/%3E%3Cpath%20d%3D%22M100%20240v-50h60l20-20v-50%22/%3E%3Cpath%20d%3D%22M240%20150h-40l-20%2020%22/%3E%3Cpath%20d%3D%22M0%20200h40%22/%3E%3C/g%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23b56a22%22%20stroke-width%3D%221.4%22%20stroke-linecap%3D%22round%22%20opacity%3D%22.18%22%3E%3Cpath%20d%3D%22M190%20240v-40l20-20h30%22/%3E%3Cpath%20d%3D%22M60%200v20l20%2020%22/%3E%3C/g%3E%3Cg%20fill%3D%22%23fbfcfb%22%20stroke%3D%22%230e6a54%22%20stroke-width%3D%221.4%22%20opacity%3D%22.28%22%3E%3Ccircle%20cx%3D%22140%22%20cy%3D%2260%22%20r%3D%224%22/%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%22110%22%20r%3D%224%22/%3E%3Ccircle%20cx%3D%22180%22%20cy%3D%22120%22%20r%3D%224%22/%3E%3Ccircle%20cx%3D%2240%22%20cy%3D%22200%22%20r%3D%224%22/%3E%3C/g%3E%3Cg%20fill%3D%22%23fbfcfb%22%20stroke%3D%22%23b56a22%22%20stroke-width%3D%221.4%22%20opacity%3D%22.3%22%3E%3Ccircle%20cx%3D%22210%22%20cy%3D%22180%22%20r%3D%224%22/%3E%3Ccircle%20cx%3D%2280%22%20cy%3D%2240%22%20r%3D%224%22/%3E%3C/g%3E%3C/svg%3E") repeat;
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent);
+          mask-image: linear-gradient(to bottom, #000 70%, transparent);
+}
+h1 .first { background: linear-gradient(transparent 72%, color-mix(in srgb, var(--copper) 28%, transparent) 72% 92%, transparent 92%); padding-inline: 2px; }
+.portrait { border: 0; padding: 5px; background: conic-gradient(from 200deg, var(--mask), var(--copper), var(--mask)); box-shadow: 0 18px 40px -18px rgba(14, 106, 84, .55); }
+.portrait img { border-radius: 50%; border: 4px solid var(--surface); }
+.chip.primary { background: var(--mask); border-color: var(--mask); color: #fff; }
+.chip.primary:hover { background: color-mix(in srgb, var(--mask) 85%, #000); color: #fff; }
+.chip { transition: transform .15s ease, border-color .15s ease, color .15s ease; }
+.chip:hover { transform: translateY(-1px); }
+.scope { box-shadow: 0 12px 30px -20px rgba(20, 32, 25, .5); }
+h2::before { content: ""; display: inline-block; width: 10px; height: 10px; margin-right: 12px; vertical-align: .18em; background: var(--copper); border-radius: 2px; transform: rotate(45deg); }
+.module { padding: 28px; margin-block: 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: 0 1px 0 rgba(20,32,25,.03), 0 18px 40px -30px rgba(20, 32, 25, .45); }
+.module + .module { border-top: 1px solid var(--line); }
+@media (max-width: 640px) { .module { padding: 18px; } }
+.module .fig { box-shadow: 0 10px 24px -18px rgba(20, 32, 25, .5); }
+.module .fig img { transition: transform .4s ease; }
+.module .fig:hover img { transform: scale(1.015); }
+.tag { background: var(--mask-soft); border-color: transparent; color: color-mix(in srgb, var(--mask) 80%, var(--ink)); }
+.item { transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.item:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--mask) 45%, var(--line)); box-shadow: 0 16px 30px -22px rgba(14, 106, 84, .5); }
+.award-sec { background: linear-gradient(135deg, var(--mask-soft), color-mix(in srgb, var(--copper) 8%, var(--surface))); border: 1px solid var(--line); border-radius: 14px; padding: 24px; margin-block: 36px; }
+.medal { background: radial-gradient(circle at 35% 30%, #f3d2a6, var(--copper)); color: #fff; border-color: #fff; box-shadow: 0 8px 18px -8px rgba(181, 106, 34, .7); }
+#contato { position: relative; isolation: isolate; border-top: 0; padding-block: 56px; color: var(--band-ink);
+  --ink: var(--band-ink); --muted: var(--band-muted); --line: var(--band-line); --surface: var(--band-surface); --mask: #6fd3b3; }
+#contato::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: calc(50% - 50vw); right: calc(50% - 50vw); background: radial-gradient(50% 80% at 90% 20%, rgba(111, 211, 179, .14), transparent 70%), var(--band); }
+#contato + footer, footer { border-top: 0; }
+footer { background: var(--band); color: var(--band-muted); margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px))); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); border-top: 1px solid var(--band-line); }
+@media (prefers-reduced-motion: reduce) { .chip, .item, .module .fig img { transition: none; } .item:hover, .chip:hover { transform: none; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#inicio">M. E. Ruela<b>_</b></a>
+    <nav class="nav" aria-label="Seções">
+      <a href="#projetos"><span lang="pt">Projetos</span><span lang="en">Projects</span></a>
+      <a href="#formacao"><span lang="pt">Formação</span><span lang="en">Education</span></a>
+      <a href="#contato"><span lang="pt">Contato</span><span lang="en">Contact</span></a>
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" id="btn-pt" data-set="pt" aria-pressed="true">PT</button>
+        <button type="button" id="btn-en" data-set="en" aria-pressed="false">EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="inicio">
+  <div class="hero">
+    <div class="hero-top">
+      <div class="hero-text">
+    <div class="eyebrow">
+      <span lang="pt">Engenharia Elétrica · UFT · Palmas, TO</span>
+      <span lang="en">Electrical Engineering · UFT · Palmas, Brazil</span>
+    </div>
+    <h1><span class="first">Maria Eduarda</span><br><span class="soft">Cajango Ruela</span></h1>
+    <p class="lede">
+      <span lang="pt">Estudante de Engenharia Elétrica com formação técnica em Mecatrônica. Desenvolvo software com IA generativa, aplicações web e sistemas IoT com comunicação sem fio.</span>
+      <span lang="en">Electrical Engineering student with a technical background in Mechatronics. I build generative AI software, web applications and IoT systems with wireless communication.</span>
+    </p>
+    <div class="links">
+      <a class="chip primary" href="https://github.com/DudaCajango" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="chip primary" href="https://www.linkedin.com/in/maria-eduarda-c-57b743111/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="chip" href="http://lattes.cnpq.br/8348172890806802" target="_blank" rel="noopener"><span lang="pt">Currículo Lattes ↗</span><span lang="en">Lattes CV ↗</span></a>
+      <a class="chip" href="#contato"><span lang="pt">Contato</span><span lang="en">Contact</span></a>
+    </div>
+      </div>
+      <figure class="portrait"><img src="img/foto.jpg" width="640" height="640" alt="Foto de Maria Eduarda Cajango Ruela"></figure>
+    </div>
+    <figure class="scope" aria-label="Animação de um sinal LoRa (chirp)">
+      <canvas id="chirp"></canvas>
+      <figcaption>
+        <span>LoRa · chirp spread spectrum</span>
+        <span><span lang="pt">fator de espalhamento</span><span lang="en">spreading factor</span> <b id="sf-label">SF7</b></span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <section id="projetos">
+    <h2><span lang="pt">Projetos em destaque</span><span lang="en">Featured projects</span></h2>
+    <p class="sub">
+      <span lang="pt">Do navegador ao rádio: uma plataforma web em produção, um sistema de IA para o Judiciário e um sistema IoT de longo alcance.</span>
+      <span lang="en">From the browser to the radio: a web platform in production, an AI system for the judiciary and a long-range IoT system.</span>
+    </p>
+
+    <!-- GestorMúsica -->
+    <article class="module">
+      <figure class="fig carousel" aria-roledescription="carrossel" aria-label="Imagens do GestorMúsica">
+        <div class="slides" tabindex="0">
+          <div class="slide" data-cap-pt="Página inicial do site" data-cap-en="Landing page">
+            <img src="img/gestormusica-home.jpg" width="1600" height="1000" alt="Página inicial do GestorMúsica">
+          </div>
+          <div class="slide" data-cap-pt="Versão para celular, instalável como aplicativo" data-cap-en="Mobile version, installable as an app">
+            <img src="img/gm-celular.jpg" width="1600" height="1000" alt="Três telas do GestorMúsica no celular" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Banco de cifras com filtros por categoria e período" data-cap-en="Chord library with category and date filters">
+            <img src="img/gm-cifras.jpg" width="1600" height="1000" alt="Banco de cifras do GestorMúsica" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Visualizador de cifra com transposição de tom" data-cap-en="Chord viewer with key transposition">
+            <img src="img/gm-cifra.jpg" width="1600" height="1000" alt="Cifra do hino Santo Santo Santo aberta no visualizador" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Planejamento de culto: repertório e escala" data-cap-en="Service plan: setlist and team">
+            <img src="img/gm-culto.jpg" width="1600" height="1000" alt="Planejamento de um culto com repertório e equipe escalada" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Editor de slides para projeção das letras" data-cap-en="Slide editor for lyric projection">
+            <img src="img/gm-projecao.jpg" width="1600" height="800" alt="Editor de projeção de letras" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Cadastro da equipe com funções de cada integrante" data-cap-en="Team roster with each member's roles">
+            <img src="img/gm-equipe.jpg" width="1600" height="1000" alt="Lista de integrantes da equipe com suas funções" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Playlists pessoais e da equipe" data-cap-en="Personal and team playlists">
+            <img src="img/gm-playlists.jpg" width="1600" height="1000" alt="Tela de playlists" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Comunidade para importar cifras de outras igrejas" data-cap-en="Community to import chord sheets from other churches">
+            <img src="img/gm-comunidade.jpg" width="1600" height="1000" alt="Tela da comunidade com cifras compartilhadas" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Relatório de músicas e participação da equipe" data-cap-en="Song and team participation report">
+            <img src="img/gm-relatorio.jpg" width="1600" height="1000" alt="Relatório de participação" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Matriz de presença por culto" data-cap-en="Attendance matrix by service">
+            <img src="img/gm-presenca.jpg" width="1600" height="1000" alt="Matriz de presença da equipe" loading="lazy">
+          </div>
+        </div>
+        <div class="car-bar">
+          <span class="car-cap"><span lang="pt"></span><span lang="en"></span></span>
+          <div class="car-ctrl">
+            <button type="button" class="car-btn" data-dir="-1" aria-label="Imagem anterior">‹</button>
+            <span class="dots" aria-hidden="true"></span>
+            <button type="button" class="car-btn" data-dir="1" aria-label="Próxima imagem">›</button>
+            <button type="button" class="car-btn car-full" aria-label="Ver em tela cheia" title="Tela cheia"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path class="i-open" d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/><path class="i-close" d="M3 3l10 10M13 3L3 13"/></svg></button>
+          </div>
+        </div>
+      </figure>
+      <div class="mod-body">
+        <div class="mod-head">
+          <img src="img/gestormusica-logo.png" width="40" height="40" alt="">
+          <h3>GestorMúsica</h3>
+        </div>
+        <span class="status"><span lang="pt">No ar</span><span lang="en">Live</span></span>
+        <p>
+          <span lang="pt">Plataforma web para ministérios de música que reúne o que antes ficava espalhado entre grupos de WhatsApp, PDFs e planilhas: repertório de cifras, escalas da equipe, planejamento de cultos e projeção de letras.</span>
+          <span lang="en">A web platform for church music teams that brings together what used to be scattered across WhatsApp groups, PDFs and spreadsheets: a chord-sheet library, team schedules, service planning and lyric projection.</span>
+        </p>
+        <ul class="points">
+          <li><span lang="pt">Editor de cifras com transposição e detecção automática de tom, importação de cifras e geração de PDF</span><span lang="en">Chord editor with transposition and automatic key detection, chord sheet import and PDF generation</span></li>
+          <li><span lang="pt">Slides de projeção gerados a partir das cifras, com modo teleprompter</span><span lang="en">Projection slides generated from the chord sheets, with a teleprompter mode</span></li>
+          <li><span lang="pt">Escalas com confirmação de presença por notificação e relatórios de participação</span><span lang="en">Schedules with attendance confirmation via notifications and participation reports</span></li>
+        </ul>
+        <table class="spec">
+          <tr><th><span lang="pt">Papel</span><span lang="en">Role</span></th><td><span lang="pt">Fundadora e desenvolvedora (projeto individual)</span><span lang="en">Founder and developer (solo project)</span></td></tr>
+          <tr><th><span lang="pt">Período</span><span lang="en">Period</span></th><td><span lang="pt">jan 2026 – atual</span><span lang="en">Jan 2026 – present</span></td></tr>
+          <tr><th>Stack</th><td><div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Tailwind</span><span class="tag">Supabase</span><span class="tag">PostgreSQL</span><span class="tag">PWA</span><span class="tag">Tesseract.js</span><span class="tag">Vercel</span></div></td></tr>
+        </table>
+        <a class="chip" href="https://www.gestormusica.com.br" target="_blank" rel="noopener"><span lang="pt">Abrir o site ↗</span><span lang="en">Visit the site ↗</span></a>
+      </div>
+    </article>
+
+    <!-- APJ -->
+    <article class="module">
+      <figure class="fig carousel" aria-roledescription="carrossel" aria-label="Imagens do APJ">
+        <div class="slides" id="apj-slides" tabindex="0">
+          <div class="slide" data-cap-pt="Tela de login do APJ" data-cap-en="APJ login screen">
+            <img src="img/apj-login.jpg" width="1600" height="902" alt="Tela de login do APJ, Assistente de Pesquisa Jurídica, com os logos das instituições parceiras" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Documentos do projeto com resumo gerado pela IA" data-cap-en="Project documents with AI-generated summary">
+            <img src="img/apj-documentos.jpg" width="1600" height="1000" alt="Lista de documentos com resumo automático de uma decisão do STF" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Áudios e vídeos transcritos e resumidos" data-cap-en="Transcribed and summarized audio and video">
+            <img src="img/apj-audio.jpg" width="1600" height="1000" alt="Lista de arquivos de áudio e vídeo de uma sessão do Senado" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Análise estratégica com linha do tempo dos fatos" data-cap-en="Strategic analysis with a timeline of facts">
+            <img src="img/apj-analise.jpg" width="1600" height="1000" alt="Linha do tempo extraída de documentos jurídicos" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Chat com respostas citando as fontes" data-cap-en="Chat answers citing their sources">
+            <img src="img/apj-chat.jpg" width="1600" height="1000" alt="Chat respondendo sobre o conteúdo dos documentos" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Referências com página e minuto exatos" data-cap-en="References with exact page and timestamp">
+            <img src="img/apj-referencias.jpg" width="1600" height="1000" alt="Lista de referências citadas com página e minuto" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Pesquisa rápida sobre um arquivo avulso" data-cap-en="Quick search on a single file">
+            <img src="img/apj-pesquisa.jpg" width="1600" height="1000" alt="Resumo de um acórdão na pesquisa rápida" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Arquitetura do sistema" data-cap-en="System architecture">
+            <div class="diagram">
+          <svg viewBox="0 0 560 300" role="img" aria-labelledby="apj-t">
+            <title id="apj-t">Arquitetura do APJ: documentos são processados, indexados em banco vetorial e consultados por um modelo de linguagem</title>
+            <defs>
+              <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker>
+            </defs>
+            <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink)">
+              <!-- inputs -->
+              <rect x="10" y="20" width="130" height="120" rx="8" fill="var(--surface)" stroke="var(--line)"/>
+              <text x="22" y="40" fill="var(--muted)" font-size="10" letter-spacing="1" lang="pt">ENTRADA</text><text x="22" y="40" fill="var(--muted)" font-size="10" letter-spacing="1" lang="en">INPUT</text>
+              <text x="22" y="62">PDF · DOCX</text>
+              <text x="22" y="82" lang="pt">planilhas</text><text x="22" y="82" lang="en">spreadsheets</text>
+              <text x="22" y="102" lang="pt">imagens</text><text x="22" y="102" lang="en">images</text>
+              <text x="22" y="122" lang="pt">áudio · vídeo</text><text x="22" y="122" lang="en">audio · video</text>
+              <!-- extraction -->
+              <rect x="180" y="20" width="160" height="120" rx="8" fill="var(--mask-soft)" stroke="var(--mask)"/>
+              <text x="192" y="40" fill="var(--mask)" font-size="10" letter-spacing="1" lang="pt">EXTRAÇÃO</text><text x="192" y="40" fill="var(--mask)" font-size="10" letter-spacing="1" lang="en">EXTRACTION</text>
+              <text x="192" y="62">Docling · OCR</text>
+              <text x="192" y="82" lang="pt">Whisper (transcrição)</text><text x="192" y="82" lang="en">Whisper (transcription)</text>
+              <text x="192" y="102" lang="pt">divisão em trechos</text><text x="192" y="102" lang="en">text chunking</text>
+              <text x="192" y="122">embeddings</text>
+              <!-- vector db -->
+              <rect x="380" y="20" width="170" height="120" rx="8" fill="var(--surface)" stroke="var(--line)"/>
+              <text x="392" y="40" fill="var(--muted)" font-size="10" letter-spacing="1" lang="pt">ÍNDICE</text><text x="392" y="40" fill="var(--muted)" font-size="10" letter-spacing="1" lang="en">INDEX</text>
+              <text x="392" y="62">PostgreSQL</text>
+              <text x="392" y="82">+ PGVector</text>
+              <text x="392" y="102" lang="pt">busca semântica</text><text x="392" y="102" lang="en">semantic search</text>
+              <!-- llm -->
+              <rect x="380" y="175" width="170" height="105" rx="8" fill="var(--mask-soft)" stroke="var(--mask)"/>
+              <text x="392" y="195" fill="var(--mask)" font-size="10" letter-spacing="1" lang="pt">MODELO (LLM)</text><text x="392" y="195" fill="var(--mask)" font-size="10" letter-spacing="1" lang="en">MODEL (LLM)</text>
+              <text x="392" y="217">Llama via Ollama (GPU)</text>
+              <text x="392" y="237" lang="pt">ou Google Gemini</text><text x="392" y="237" lang="en">or Google Gemini</text>
+              <text x="392" y="257" lang="pt">RAG com fontes</text><text x="392" y="257" lang="en">RAG with sources</text>
+              <!-- outputs -->
+              <rect x="10" y="175" width="330" height="105" rx="8" fill="var(--surface)" stroke="var(--line)"/>
+              <text x="22" y="195" fill="var(--muted)" font-size="10" letter-spacing="1" lang="pt">SAÍDA · FastAPI + React</text><text x="22" y="195" fill="var(--muted)" font-size="10" letter-spacing="1" lang="en">OUTPUT · FastAPI + React</text>
+              <text x="22" y="217" lang="pt">resumo automático dos documentos</text><text x="22" y="217" lang="en">automatic document summaries</text>
+              <text x="22" y="237" lang="pt">chat com perguntas sobre os arquivos</text><text x="22" y="237" lang="en">chat with questions about the files</text>
+              <text x="22" y="257" lang="pt">análise estratégica do processo</text><text x="22" y="257" lang="en">strategic case analysis</text>
+            </g>
+            <g stroke="var(--muted)" stroke-width="1.5" fill="none">
+              <line x1="140" y1="80" x2="176" y2="80" marker-end="url(#ah)"/>
+              <line x1="340" y1="80" x2="376" y2="80" marker-end="url(#ah)"/>
+              <line x1="465" y1="140" x2="465" y2="171" marker-end="url(#ah)"/>
+              <line x1="380" y1="228" x2="344" y2="228" marker-end="url(#ah)"/>
+            </g>
+          </svg>
+        </div>
+          </div>
+        </div>
+        <div class="car-bar">
+          <span class="car-cap"><span lang="pt"></span><span lang="en"></span></span>
+          <div class="car-ctrl">
+            <button type="button" class="car-btn" data-dir="-1" aria-label="Imagem anterior">‹</button>
+            <span class="dots" aria-hidden="true"></span>
+            <button type="button" class="car-btn" data-dir="1" aria-label="Próxima imagem">›</button>
+            <button type="button" class="car-btn car-full" aria-label="Ver em tela cheia" title="Tela cheia"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path class="i-open" d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/><path class="i-close" d="M3 3l10 10M13 3L3 13"/></svg></button>
+          </div>
+        </div>
+      </figure>
+      <div class="mod-body">
+        <div class="mod-head"><h3>APJ <span style="font-weight:500;color:var(--muted);font-size:.7em"><span lang="pt">Assistente de Pesquisa Jurídica</span><span lang="en">Legal Research Assistant</span></span></h3></div>
+        <span class="status wip"><span lang="pt">Em desenvolvimento</span><span lang="en">In development</span></span>
+        <p>
+          <span lang="pt">Assistente de análise de documentos jurídicos com IA generativa, desenvolvido no projeto de tecnologias emergentes da Escola Superior da Magistratura Tocantinense (ESMAT). Recebe documentos em vários formatos, gera resumos e responde perguntas sobre eles citando os trechos de origem.</span>
+          <span lang="en">A generative AI assistant for legal document analysis, built within the emerging technologies project of the Tocantins School of Magistracy (ESMAT). It ingests documents in many formats, produces summaries and answers questions about them, citing the source passages.</span>
+        </p>
+        <ul class="points">
+          <li><span lang="pt">Ideia original minha; liderei o desenvolvimento desde o início e coordeno a parte técnica da equipe</span><span lang="en">My original idea; I have led development from the start and coordinate the team's technical work</span></li>
+          <li><span lang="pt">Roda com modelos locais em GPU ou com a API do Gemini, escolhidos automaticamente</span><span lang="en">Runs on local GPU models or on the Gemini API, selected automatically</span></li>
+        </ul>
+        <table class="spec">
+          <tr><th><span lang="pt">Projeto</span><span lang="en">Project</span></th><td><span lang="pt">Concepção e Implantação de Tecnologias Emergentes na ESMAT (Convênio 20/2024)</span><span lang="en">Design and Implementation of Emerging Technologies at ESMAT (Agreement 20/2024)</span></td></tr>
+          <tr><th><span lang="pt">Papel</span><span lang="en">Role</span></th><td><span lang="pt">Idealizadora e líder técnica · bolsista FAPTO</span><span lang="en">Creator and tech lead · FAPTO research fellow</span></td></tr>
+          <tr><th><span lang="pt">Período</span><span lang="en">Period</span></th><td><span lang="pt">jul 2025 – atual</span><span lang="en">Jul 2025 – present</span></td></tr>
+          <tr><th>Stack</th><td><div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">LangChain</span><span class="tag">PGVector</span><span class="tag">Ollama</span><span class="tag">Gemini</span><span class="tag">React + TS</span><span class="tag">Docker</span></div></td></tr>
+        </table>
+      </div>
+    </article>
+
+    <!-- TCC -->
+    <article class="module">
+      <figure class="fig carousel" aria-roledescription="carrossel" aria-label="Imagens do TCC">
+        <div class="slides" id="tcc-slides" tabindex="0">
+          <div class="slide" data-cap-pt="Nó Sensor em campo: painel solar, antena LoRa, pluviômetro e sensor de umidade" data-cap-en="Field sensor node: solar panel, LoRa antenna, rain gauge and moisture sensor">
+            <img src="img/tcc-campo.jpg" width="1600" height="1000" alt="Ilustração do Nó Sensor instalado em um poste, com painel fotovoltaico, antena LoRa, pluviômetro e sensor de umidade do solo" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Protótipo montado: Nó Sensor com relés (esq.) e Gateway (dir.)" data-cap-en="Assembled prototype: sensor node with relays (left) and gateway (right)">
+            <img src="img/tcc-prototipo.jpg" width="1600" height="1000" alt="Duas placas: à esquerda o Nó Sensor com módulo LoRa, display e dois relés; à direita o Gateway com display, LEDs e botões de Pivô, Irrigação e Manual" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Arquitetura do sistema" data-cap-en="System architecture">
+        <div class="diagram">
+          <svg viewBox="0 0 560 300" role="img" aria-labelledby="tcc-t">
+            <title id="tcc-t">Arquitetura do sistema IoT: nó de campo com ESP32 ligado por LoRa a um gateway que publica na nuvem</title>
+            <defs>
+              <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker>
+            </defs>
+            <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--ink)">
+              <rect x="10" y="30" width="170" height="150" rx="8" fill="var(--mask-soft)" stroke="var(--mask)"/>
+              <text x="22" y="50" fill="var(--mask)" font-size="10" letter-spacing="1" lang="pt">NÓ DE CAMPO · ESP32</text><text x="22" y="50" fill="var(--mask)" font-size="10" letter-spacing="1" lang="en">FIELD NODE · ESP32</text>
+              <text x="22" y="74" lang="pt">sensores de umidade</text><text x="22" y="74" lang="en">soil moisture sensors</text>
+              <text x="22" y="94" lang="pt">filtro híbrido</text><text x="22" y="94" lang="en">hybrid filter</text>
+              <text x="22" y="114" lang="pt">decide a irrigação</text><text x="22" y="114" lang="en">decides irrigation</text>
+              <text x="22" y="134" lang="pt">relés do pivô</text><text x="22" y="134" lang="en">pivot relays</text>
+              <text x="22" y="154" lang="pt">botão local</text><text x="22" y="154" lang="en">local button</text>
+              <rect x="380" y="30" width="170" height="150" rx="8" fill="var(--mask-soft)" stroke="var(--mask)"/>
+              <text x="392" y="50" fill="var(--mask)" font-size="10" letter-spacing="1">GATEWAY · ESP32</text>
+              <text x="392" y="74" lang="pt">adapta o SF</text><text x="392" y="74" lang="en">adapts the SF</text>
+              <text x="392" y="94" lang="pt">confirma comandos</text><text x="392" y="94" lang="en">confirms commands</text>
+              <text x="392" y="114" lang="pt">pelo estado dos relés</text><text x="392" y="114" lang="en">from relay state</text>
+              <text x="392" y="134" lang="pt">publica na nuvem</text><text x="392" y="134" lang="en">publishes to cloud</text>
+              <rect x="380" y="215" width="170" height="70" rx="8" fill="var(--surface)" stroke="var(--line)"/>
+              <text x="392" y="235" fill="var(--muted)" font-size="10" letter-spacing="1" lang="pt">NUVEM</text><text x="392" y="235" fill="var(--muted)" font-size="10" letter-spacing="1" lang="en">CLOUD</text>
+              <text x="392" y="257" lang="pt">painel web</text><text x="392" y="257" lang="en">web panel</text>
+              <text x="392" y="275" lang="pt">assistente de voz</text><text x="392" y="275" lang="en">voice assistant</text>
+              <text x="200" y="64" fill="var(--copper)">LoRa · SF7 – SF12</text>
+              <text x="200" y="146" fill="var(--muted)" font-size="10" lang="pt">sem internet no campo</text><text x="200" y="146" fill="var(--muted)" font-size="10" lang="en">no internet in the field</text>
+              <rect x="10" y="215" width="330" height="70" rx="8" fill="var(--surface)" stroke="var(--line)"/>
+              <text x="22" y="235" fill="var(--muted)" font-size="10" letter-spacing="1" lang="pt">SEM INTERNET OU SEM GATEWAY</text><text x="22" y="235" fill="var(--muted)" font-size="10" letter-spacing="1" lang="en">NO INTERNET OR NO GATEWAY</text>
+              <text x="22" y="257" lang="pt">o nó segue no controle local</text><text x="22" y="257" lang="en">the node keeps local control</text>
+              <text x="22" y="275" lang="pt">e corta a irrigação em caso de chuva</text><text x="22" y="275" lang="en">and stops irrigation when it rains</text>
+            </g>
+            <path d="M184 105 Q 230 70 280 105 T 376 105" fill="none" stroke="var(--copper)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ah2)"/>
+            <path d="M376 112 Q 330 140 280 112 T 184 112" fill="none" stroke="var(--copper)" stroke-width="1.2" stroke-dasharray="3 4" opacity=".7" marker-end="url(#ah2)"/>
+            <line x1="465" y1="180" x2="465" y2="211" stroke="var(--muted)" stroke-width="1.5" marker-end="url(#ah2)"/>
+            <line x1="95" y1="180" x2="95" y2="211" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          </svg>
+        </div>
+          </div>
+          <div class="slide" data-cap-pt="Placa do Nó Sensor: layout e renderização 3D" data-cap-en="Sensor node board: layout and 3D render">
+            <img src="img/tcc-no-pcb.jpg" width="1600" height="1000" alt="Layout das trilhas e renderização 3D da placa do Nó Sensor, com dois relés e o módulo ESP32 LoRa" loading="lazy">
+          </div>
+          <div class="slide" data-cap-pt="Placa do Gateway: layout e renderização 3D" data-cap-en="Gateway board: layout and 3D render">
+            <img src="img/tcc-gw-pcb.jpg" width="1600" height="1000" alt="Layout e renderização 3D da placa do Gateway, com três LEDs e três botões" loading="lazy">
+          </div>
+        </div>
+        <div class="car-bar">
+          <span class="car-cap"><span lang="pt"></span><span lang="en"></span></span>
+          <div class="car-ctrl">
+            <button type="button" class="car-btn" data-dir="-1" aria-label="Imagem anterior">‹</button>
+            <span class="dots" aria-hidden="true"></span>
+            <button type="button" class="car-btn" data-dir="1" aria-label="Próxima imagem">›</button>
+            <button type="button" class="car-btn car-full" aria-label="Ver em tela cheia" title="Tela cheia"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path class="i-open" d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/><path class="i-close" d="M3 3l10 10M13 3L3 13"/></svg></button>
+          </div>
+        </div>
+      </figure>
+      <div class="mod-body">
+        <div class="mod-head">
+          <h3><span lang="pt">IoT para pivôs centrais</span><span lang="en">IoT for center pivots</span></h3>
+        </div>
+        <span class="status wip"><span lang="pt">TCC · em andamento</span><span lang="en">Thesis · in progress</span></span>
+        <p>
+          <span lang="pt">Sistema para monitorar e acionar remotamente pivôs centrais de irrigação em áreas sem cobertura de rede, usando enlace LoRa entre um nó de campo e um gateway. O nó decide a irrigação localmente e o gateway ajusta o fator de espalhamento conforme a qualidade do canal.</span>
+          <span lang="en">A system to remotely monitor and control center-pivot irrigation in areas without network coverage, using a LoRa link between a field node and a gateway. The node decides irrigation locally and the gateway tunes the spreading factor to channel quality.</span>
+        </p>
+        <ul class="points">
+          <li><span lang="pt">Comando só é confirmado quando o nó informa o estado real dos relés</span><span lang="en">A command is confirmed only after the node reports the actual relay state</span></li>
+          <li><span lang="pt">Ciclo de trabalho para reduzir consumo e filtro de sinal contra acionamentos falsos</span><span lang="en">Duty cycling to cut power use and signal filtering against false triggers</span></li>
+          <li><span lang="pt">Acionamento por botão local, painel web e assistente de voz</span><span lang="en">Control from a local button, a web panel and a voice assistant</span></li>
+        </ul>
+        <table class="spec">
+          <tr><th><span lang="pt">Orientação</span><span lang="en">Advisors</span></th><td>Dr. Humberto Xavier de Araujo · Me. Bruno Sousa Dias</td></tr>
+          <tr><th><span lang="pt">Período</span><span lang="en">Period</span></th><td>2026</td></tr>
+          <tr><th>Stack</th><td><div class="tags"><span class="tag">ESP32</span><span class="tag">LoRa</span><span class="tag">MQTT</span><span class="tag">ThingsBoard</span><span class="tag"><span lang="pt">Projeto de PCI</span><span lang="en">PCB design</span></span><span class="tag"><span lang="pt">Sistemas embarcados</span><span lang="en">Embedded systems</span></span></div></td></tr>
+        </table>
+      </div>
+    </article>
+  </section>
+
+  <section>
+    <h2><span lang="pt">Outros projetos</span><span lang="en">Other projects</span></h2>
+    <p class="sub"><span lang="pt">Pesquisa, extensão e ensino na UFT.</span><span lang="en">Research, outreach and teaching at UFT.</span></p>
+    <div class="list">
+      <div class="item">
+        <span class="when">2025 – <span lang="pt">atual · bolsista FAPTO</span><span lang="en">present · FAPTO fellow</span></span>
+        <h4><span lang="pt">Tecnologias Emergentes na ESMAT</span><span lang="en">Emerging Technologies at ESMAT</span></h4>
+        <p><span lang="pt">Bolsista de estímulo à inovação no projeto Concepção e Implantação de Tecnologias Emergentes na Escola Superior da Magistratura Tocantinense, com atuação em inteligência artificial, realidade aumentada e realidade virtual. O APJ é o sistema que idealizei e desenvolvo dentro deste projeto.</span><span lang="en">Innovation fellow in the project Design and Implementation of Emerging Technologies at the Tocantins School of Magistracy, working on artificial intelligence, augmented reality and virtual reality. APJ is the system I created and develop within this project.</span></p>
+        <p><span lang="pt">Coordenação: Prof. Dr. Humberto Xavier de Araujo</span><span lang="en">Coordinator: Prof. Humberto Xavier de Araujo, PhD</span></p>
+      </div>
+      <div class="item">
+        <span class="when">2024 · <span lang="pt">bolsista FAPTO</span><span lang="en">FAPTO fellow</span></span>
+        <h4><span lang="pt">Pesquisa e Desenvolvimento em Radiofrequência</span><span lang="en">Radio Frequency Research and Development</span></h4>
+        <p><span lang="pt">Colaborei no desenvolvimento de um módulo de radiofrequência e fui tutora do minicurso de programação para estudos de RF (15h).</span><span lang="en">Worked on the development of an RF module and tutored a 15-hour programming course for RF studies.</span></p>
+      </div>
+      <div class="item">
+        <span class="when">2023 · <span lang="pt">pesquisa e monitoria</span><span lang="en">research and teaching assistant</span></span>
+        <h4>@matematicanaeletrica</h4>
+        <p><span lang="pt">Rede social de apoio à matemática no ciclo básico da engenharia, dentro do Programa de Inovação Pedagógica. Trabalho apresentado no X SIEPE.</span><span lang="en">A social media project supporting first-year engineering math, part of the Pedagogical Innovation Program. Presented at X SIEPE.</span></p>
+      </div>
+      <div class="item">
+        <span class="when">2024 · <span lang="pt">extensão</span><span lang="en">outreach</span></span>
+        <h4><span lang="pt">Engenharia nas escolas (PIBEX)</span><span lang="en">Engineering in schools (PIBEX)</span></h4>
+        <p><span lang="pt">Experimentos práticos de engenharia elétrica e física em escolas públicas de Palmas.</span><span lang="en">Hands-on electrical engineering and physics experiments in public schools in Palmas.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="award-sec">
+    <div class="award">
+      <div class="medal" aria-hidden="true">3º</div>
+      <p>
+        <strong><span lang="pt">3º lugar na Huawei ICT Competition 2024–2025</span><span lang="en">3rd place, Huawei ICT Competition 2024–2025</span></strong>
+        <span lang="pt">Trilha de Computação, etapa nacional (Brasil).</span><span lang="en">Computing track, national stage (Brazil).</span>
+      </p>
+    </div>
+    <figure class="award-photo">
+      <img src="img/huawei-premiacao.jpg" width="1350" height="900" alt="Equipe da UFT recebendo o prêmio de 3º lugar na trilha Computing da Huawei ICT Competition 2024–2025" loading="lazy">
+      <figcaption><span lang="pt">Premiação da equipe da UFT · Rio de Janeiro, fevereiro de 2025</span><span lang="en">UFT team at the award ceremony · Rio de Janeiro, February 2025</span></figcaption>
+    </figure>
+  </section>
+
+  <section id="formacao">
+    <h2><span lang="pt">Formação e competências</span><span lang="en">Education and skills</span></h2>
+    <div class="two">
+      <div>
+        <h3 class="col"><span lang="pt">Formação</span><span lang="en">Education</span></h3>
+        <ul class="timeline">
+          <li><span class="yrs">2022 – 2026</span><div><strong><span lang="pt">Bacharelado em Engenharia Elétrica</span><span lang="en">B.Eng. in Electrical Engineering</span></strong><span>Universidade Federal do Tocantins (UFT)</span></div></li>
+          <li><span class="yrs">2019 – 2021</span><div><strong><span lang="pt">Técnico em Mecatrônica integrado ao ensino médio</span><span lang="en">Mechatronics Technician (integrated high school)</span></strong><span>Instituto Federal do Tocantins (IFTO)</span></div></li>
+          <li><span class="yrs">2026</span><div><strong><span lang="pt">Capacitação em Realidade Aumentada (60h)</span><span lang="en">Augmented Reality Training (60h)</span></strong><span>Instituto Vertex · PPI Softex/MCTI</span></div></li>
+          <li><span class="yrs">2024</span><div><strong><span lang="pt">Eletricista de Sistemas de Energias Renováveis (200h)</span><span lang="en">Renewable Energy Systems Electrician (200h)</span></strong><span>IFTO · PRONATEC</span></div></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="col"><span lang="pt">Competências</span><span lang="en">Skills</span></h3>
+        <div class="skillgroup">
+          <h4>Software</h4>
+          <div class="tags"><span class="tag">Python</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">Supabase</span><span class="tag">Docker</span><span class="tag">Git</span></div>
+        </div>
+        <div class="skillgroup">
+          <h4><span lang="pt">Inteligência artificial</span><span lang="en">Artificial intelligence</span></h4>
+          <div class="tags"><span class="tag"><span lang="pt">IA generativa</span><span lang="en">Generative AI</span></span><span class="tag">LLMs</span><span class="tag">RAG</span><span class="tag">LangChain</span><span class="tag">Ollama</span></div>
+        </div>
+        <div class="skillgroup">
+          <h4><span lang="pt">Hardware e telecomunicações</span><span lang="en">Hardware and telecom</span></h4>
+          <div class="tags"><span class="tag">ESP32</span><span class="tag">LoRa</span><span class="tag">IoT</span><span class="tag"><span lang="pt">Sistemas embarcados</span><span lang="en">Embedded systems</span></span><span class="tag"><span lang="pt">Radiofrequência</span><span lang="en">Radio frequency</span></span><span class="tag"><span lang="pt">Automação</span><span lang="en">Automation</span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="contact">
+    <h2><span lang="pt">Contato</span><span lang="en">Contact</span></h2>
+    <p class="sub" style="margin-bottom:6px"><span lang="pt">Aberta a conversas sobre estágio, projetos e colaboração.</span><span lang="en">Open to conversations about internships, projects and collaboration.</span></p>
+    <div class="mail">
+      <code id="email">duda.cajango.ruela@gmail.com</code>
+      <button type="button" class="copy" id="copy-email"><span lang="pt">Copiar e-mail</span><span lang="en">Copy email</span></button>
+    </div>
+    <div class="links">
+      <a class="chip" href="https://www.linkedin.com/in/maria-eduarda-c-57b743111/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="chip" href="https://github.com/DudaCajango" target="_blank" rel="noopener">GitHub ↗</a>
+      <a class="chip" href="http://lattes.cnpq.br/8348172890806802" target="_blank" rel="noopener">Lattes ↗</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Maria Eduarda Cajango Ruela · Palmas, TO · 2026</div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var KEY = 'portfolio-lang';
+  function setLang(l) {
+    root.setAttribute('data-lang', l);
+    root.setAttribute('lang', l === 'en' ? 'en' : 'pt-BR');
+    document.getElementById('btn-pt').setAttribute('aria-pressed', String(l === 'pt'));
+    document.getElementById('btn-en').setAttribute('aria-pressed', String(l === 'en'));
+    try { localStorage.setItem(KEY, l); } catch (e) {}
+  }
+  var initial = 'pt';
+  try { var s = localStorage.getItem(KEY); if (s === 'en' || s === 'pt') initial = s; } catch (e) {}
+  setLang(initial);
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-set')); });
+  });
+
+  // copy email
+  var copyBtn = document.getElementById('copy-email');
+  copyBtn.addEventListener('click', function () {
+    var text = document.getElementById('email').textContent;
+    var done = function () {
+      var pt = copyBtn.querySelector('[lang="pt"]'), en = copyBtn.querySelector('[lang="en"]');
+      pt.textContent = 'Copiado'; en.textContent = 'Copied';
+      setTimeout(function () { pt.textContent = 'Copiar e-mail'; en.textContent = 'Copy email'; }, 1800);
+    };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    };
+    try {
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+
+
+  // carousels
+  document.querySelectorAll('.carousel').forEach(function (car) {
+    var track = car.querySelector('.slides');
+    var slides = Array.prototype.slice.call(track.querySelectorAll('.slide'));
+    var dots = car.querySelector('.dots');
+    var capPt = car.querySelector('.car-cap [lang="pt"]'), capEn = car.querySelector('.car-cap [lang="en"]');
+    var prev = car.querySelector('[data-dir="-1"]'), next = car.querySelector('[data-dir="1"]');
+    slides.forEach(function () { dots.appendChild(document.createElement('i')); });
+    var idx = 0;
+    function show(i) {
+      idx = i;
+      Array.prototype.forEach.call(dots.children, function (d, j) { d.className = j === i ? 'on' : ''; });
+      capPt.textContent = slides[i].getAttribute('data-cap-pt') + ' · ' + (i + 1) + '/' + slides.length;
+      capEn.textContent = slides[i].getAttribute('data-cap-en') + ' · ' + (i + 1) + '/' + slides.length;
+      prev.disabled = i === 0; next.disabled = i === slides.length - 1;
+    }
+    var busy = false, bt;
+    function go(i) { i = Math.max(0, Math.min(slides.length - 1, i)); busy = true; clearTimeout(bt); bt = setTimeout(function () { busy = false; }, 700); track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: 'smooth' }); show(i); }
+    prev.addEventListener('click', function () { go(idx - 1); });
+    next.addEventListener('click', function () { go(idx + 1); });
+    track.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { e.preventDefault(); go(idx + 1); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(idx - 1); } });
+    var t;
+    track.addEventListener('scroll', function () { if (busy) return; clearTimeout(t); t = setTimeout(function () { var i = Math.round(track.scrollLeft / track.clientWidth); if (i !== idx) show(i); }, 80); });
+    var full = car.querySelector('.car-full');
+    function realign() { busy = true; clearTimeout(bt); track.style.scrollBehavior = 'auto'; track.scrollLeft = idx * track.clientWidth; track.style.scrollBehavior = ''; bt = setTimeout(function () { busy = false; }, 200); }
+    function setFull(on) {
+      car.classList.toggle('is-full', on);
+      document.documentElement.classList.toggle('car-lock', on);
+      full.setAttribute('aria-label', on ? 'Sair da tela cheia' : 'Ver em tela cheia');
+      full.title = on ? 'Sair da tela cheia' : 'Tela cheia';
+      realign();
+      if (on) track.focus({ preventScroll: true }); else full.focus({ preventScroll: true });
+    }
+    full.addEventListener('click', function () { setFull(!car.classList.contains('is-full')); });
+    track.addEventListener('dblclick', function () { setFull(!car.classList.contains('is-full')); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && car.classList.contains('is-full')) setFull(false); });
+    window.addEventListener('resize', function () { if (car.classList.contains('is-full')) realign(); });
+    show(0);
+  });
+
+  // LoRa chirp scope
+  var cv = document.getElementById('chirp');
+  var ctx = cv.getContext('2d');
+  var sfLabel = document.getElementById('sf-label');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var colors = {};
+  function readColors() {
+    var cs = getComputedStyle(root);
+    colors.mask = cs.getPropertyValue('--mask').trim();
+    colors.copper = cs.getPropertyValue('--copper').trim();
+    colors.line = cs.getPropertyValue('--line').trim();
+    colors.muted = cs.getPropertyValue('--muted').trim();
+  }
+  function size() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = cv.clientWidth, h = cv.clientHeight;
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  var SFS = [7, 8, 9, 10, 11, 12];
+  var sfIndex = 0, offset = 0, last = 0, hold = 0;
+  function draw() {
+    var w = cv.clientWidth, h = cv.clientHeight, mid = h / 2;
+    ctx.clearRect(0, 0, w, h);
+    // grid
+    ctx.strokeStyle = colors.line; ctx.lineWidth = 1;
+    for (var gx = 0; gx < w; gx += 40) { ctx.beginPath(); ctx.moveTo(gx + .5, 0); ctx.lineTo(gx + .5, h); ctx.stroke(); }
+    for (var gy = 0; gy <= h; gy += h / 4) { ctx.beginPath(); ctx.moveTo(0, gy + .5); ctx.lineTo(w, gy + .5); ctx.stroke(); }
+    var sf = SFS[sfIndex];
+    var symbolW = 130 * Math.pow(2, (sf - 7) / 2.6); // longer symbols at higher SF
+    var amp = h * 0.32;
+    // waveform: repeating linear up-chirps
+    ctx.strokeStyle = colors.mask; ctx.lineWidth = 1.6; ctx.beginPath();
+    for (var x = 0; x <= w; x += 1) {
+      var t = ((x + offset) % symbolW) / symbolW; // 0..1 within a symbol
+      var f0 = 1, f1 = 6;                          // cycles per symbol, start/end
+      var phase = 2 * Math.PI * (f0 * t + 0.5 * (f1 - f0) * t * t);
+      var y = mid - Math.sin(phase) * amp;
+      if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    // instantaneous frequency ramp (sawtooth) in copper
+    ctx.strokeStyle = colors.copper; ctx.lineWidth = 1.2; ctx.globalAlpha = .8; ctx.beginPath();
+    for (var x2 = 0; x2 <= w; x2 += 1) {
+      var t2 = ((x2 + offset) % symbolW) / symbolW;
+      var y2 = h - 10 - t2 * (h - 20);
+      var prev = (((x2 - 1) + offset) % symbolW) / symbolW;
+      if (x2 === 0 || t2 < prev) ctx.moveTo(x2, y2); else ctx.lineTo(x2, y2);
+    }
+    ctx.stroke(); ctx.globalAlpha = 1;
+    sfLabel.textContent = 'SF' + sf;
+  }
+  function tick(ts) {
+    var dt = last ? Math.min(ts - last, 50) : 16; last = ts;
+    offset += dt * 0.06;
+    hold += dt;
+    if (hold > 3200) { hold = 0; sfIndex = (sfIndex + 1) % SFS.length; }
+    draw();
+    requestAnimationFrame(tick);
+  }
+  readColors(); size(); draw();
+  window.addEventListener('resize', function () { size(); draw(); });
+  if (!reduce) requestAnimationFrame(tick);
+})();
+</script>
+
+</body>
+</html>
